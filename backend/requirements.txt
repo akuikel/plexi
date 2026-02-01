@@ -1,0 +1,17 @@
+fastapi==0.115.8
+uvicorn==0.30.6
+websockets==12.0
+pydantic==2.8.2
+pydantic-settings==2.4.0
+numpy==2.0.2
+sounddevice==0.5.0
+supabase==2.6.0
+python-dotenv==1.0.1
+twilio==9.0.5
+faster-whisper==1.0.3
+
+# Optional (model + optimization)
+accelerate==0.34.2
+transformers==4.44.2
+mlx>=0.16.3
+soxr==0.3.7

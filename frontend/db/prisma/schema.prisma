@@ -1,0 +1,144 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id               String        @id @default(cuid())
+  username         String        @unique
+  email            String        @unique
+  passwordHash     String
+  name             String?
+  profileUrl       String?
+  phone            String?
+  location         String?
+  bio              String?
+  role             Role          @default(USER)
+  googleId         String?       @unique
+  resetToken       String?       @unique
+  resetTokenExpiry DateTime?
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+  
+  // Relations
+  createdCalls     Call[]
+  chatMessages     ChatMessage[]
+  chats            Chat[]
+
+  @@index([username])
+  @@index([email])
+  @@index([googleId])
+  @@index([resetToken])
+}
+
+model Chat {
+  id           String        @id @default(cuid())
+  title        String?       // Auto-generated title based on first message or manually set
+  userId       String
+  lastActivity DateTime      @default(now())
+  isArchived   Boolean       @default(false)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  
+  // Relations
+  user         User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messages     ChatMessage[]
+  calls        Call[]        // Calls initiated from this chat
+
+  @@index([userId])
+  @@index([lastActivity])
+}
+
+model AdminRequest {
+  id         String        @id @default(cuid())
+  userId     String
+  userEmail  String
+  userName   String
+  authToken  String        @unique
+  status     RequestStatus @default(PENDING)
+  expiresAt  DateTime
+  approvedBy String?
+  approvedAt DateTime?
+  createdAt  DateTime      @default(now())
+
+  @@index([userId])
+  @@index([authToken])
+  @@index([status])
+}
+
+model Call {
+  id                 String        @id @default(uuid())
+  title              String
+  date               DateTime
+  duration           String
+  summary            String
+  transcript         Json
+  startTime          DateTime?
+  endTime            DateTime?
+  scheduledStartTime DateTime?
+  status             CallStatus    @default(DRAFT)
+  createdBy          String?
+  chatId             String?       // Link to the chat this call was initiated from
+  createdAt          DateTime      @default(now())
+  
+  // Relations
+  creator            User?         @relation(fields: [createdBy], references: [id], onDelete: Cascade)
+  chat               Chat?         @relation(fields: [chatId], references: [id], onDelete: SetNull)
+  chatMessages       ChatMessage[]
+
+  @@index([createdBy])
+  @@index([chatId])
+}
+
+model ChatMessage {
+  id          String      @id @default(cuid())
+  textMessage String
+  role        MessageRole
+  callId      String?
+  userId      String?
+  chatId      String?     // Link to the chat this message belongs to
+  voiceData   Bytes?      // Store voice message as binary data
+  imageData   Bytes?      // Store image file as binary data
+  imageName   String?     // Store original image filename
+  mimeType    String?     // Store MIME type for files
+  createdAt   DateTime    @default(now())
+  
+  // Relations
+  call        Call?       @relation(fields: [callId], references: [id], onDelete: Cascade)
+  user        User?       @relation(fields: [userId], references: [id], onDelete: SetNull)
+  chat        Chat?       @relation(fields: [chatId], references: [id], onDelete: Cascade)
+  
+  @@index([callId])
+  @@index([userId])
+  @@index([chatId])
+}
+
+enum Role {
+  USER
+  ADMIN
+  WAITLIST
+}
+
+enum RequestStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  EXPIRED
+}
+
+enum CallStatus {
+  DRAFT
+  SCHEDULED
+  ACTIVE
+  COMPLETED
+}
+
+enum MessageRole {
+  AI
+  USER
+}
