@@ -1,12 +1,16 @@
 /* Global Design System */
 :root {
   /* Colors */
-  --bg-primary: #FAF8F5; /* Off-white base */
-  --text-primary: #29303D; /* Deep Charcoal */
-  --color-accent: #295647; /* Forest Green */
-  --color-secondary: #D7AA42; /* Gold */
+  --bg-primary: #FAF8F5;
+  /* Off-white base */
+  --text-primary: #29303D;
+  /* Deep Charcoal */
+  --color-accent: #295647;
+  /* Forest Green */
+  --color-secondary: #D7AA42;
+  /* Gold */
   --color-white: #FFFFFF;
-  
+
   /* Typography */
   --font-serif: 'Playfair Display', serif;
   --font-sans: 'Inter', sans-serif;
@@ -26,7 +30,12 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-serif);
   font-weight: 700;
   line-height: 1.2;
@@ -50,13 +59,15 @@ button {
   color: var(--bg-primary);
   padding: 12px 32px;
   border: 2px solid var(--color-accent);
-  border-radius: 4px; /* Slightly rounded, professional */
+  border-radius: 4px;
+  /* Slightly rounded, professional */
   font-weight: 600;
   font-size: 1rem;
 }
 
 .btn-primary:hover {
-  background-color: #1e3f34; /* Darker green */
+  background-color: #1e3f34;
+  /* Darker green */
   border-color: #1e3f34;
 }
 
@@ -73,4 +84,34 @@ button {
 .btn-outline:hover {
   background-color: var(--text-primary);
   color: var(--bg-primary);
+}
+
+/* Responsive Utilities */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 15px;
+  }
+
+  h1 {
+    font-size: clamp(1.75rem, 6vw, 2.5rem) !important;
+  }
+
+  .btn-primary,
+  .btn-outline {
+    width: 100%;
+    text-align: center;
+    padding: 14px 24px;
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 12px;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }

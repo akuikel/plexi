@@ -184,6 +184,7 @@ const VoiceDemo = () => {
             borderRadius: '20px',
             boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
             overflow: 'hidden',
+            width: '100%',
             maxWidth: '450px',
             margin: '0 auto',
             border: '1px solid rgba(0,0,0,0.05)'
