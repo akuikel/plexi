@@ -193,12 +193,12 @@ const VoiceDemo = () => {
             {/* Tabs */}
             <div style={{
                 display: 'flex',
-                flexWrap: 'nowrap', // Force single line
-                overflowX: 'auto',   // Scroll if absolutely necessary
-                scrollbarWidth: 'none', // Hide scrollbar
-                justifyContent: 'space-between', // Distribute evenly
-                gap: '5px',
-                padding: '15px',
+                flexWrap: 'wrap', // Allow wrapping on very small screens
+                overflowX: 'auto',
+                scrollbarWidth: 'none',
+                justifyContent: 'space-between',
+                gap: 'clamp(3px, 1vw, 5px)',
+                padding: 'clamp(10px, 2vw, 15px)',
                 borderBottom: '1px solid rgba(0,0,0,0.05)',
                 backgroundColor: '#fff'
             }}>
@@ -207,15 +207,16 @@ const VoiceDemo = () => {
                         key={key}
                         onClick={() => setActiveTab(key)}
                         style={{
-                            padding: '6px 10px', // Reduced padding to fit
+                            padding: 'clamp(4px, 1vw, 6px) clamp(6px, 1.5vw, 10px)',
                             borderRadius: '20px',
                             border: key === activeTab ? `2px solid ${data.color}` : '1px solid #ddd',
                             backgroundColor: key === activeTab ? data.color : '#fff',
                             color: key === activeTab ? '#fff' : '#666',
-                            fontSize: '0.75rem', // Slightly smaller font
+                            fontSize: 'clamp(0.65rem, 1.5vw, 0.75rem)',
                             fontWeight: '600',
                             whiteSpace: 'nowrap',
-                            flex: '1 0 auto', // Allow flex
+                            flex: '1 0 auto',
+                            minWidth: 'fit-content',
                             textAlign: 'center',
                             transition: 'all 0.2s',
                             cursor: 'pointer'

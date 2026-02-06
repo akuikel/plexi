@@ -98,10 +98,8 @@ button {
 
   .btn-primary,
   .btn-outline {
-    width: 100%;
-    text-align: center;
-    padding: 14px 24px;
-    font-size: 0.95rem;
+    padding: clamp(10px, 2vw, 14px) clamp(20px, 4vw, 24px);
+    font-size: clamp(0.85rem, 2vw, 0.95rem);
   }
 }
 
