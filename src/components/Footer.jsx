@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <footer style={{ backgroundColor: '#fff', borderTop: '1px solid #eee', padding: '30px 0' }}>
+        <footer style={{ backgroundColor: '#fff', borderTop: '1px solid #eee', padding: '20px 0' }}>
             <div className="container footer-container">
                 <div className="footer-main-content">
                     <div className="footer-top-row">
@@ -29,7 +29,7 @@ const Footer = () => {
                     </div>
                     <div className="footer-bottom-row">
                         <span className="footer-copyright">
-                            &copy; {new Date().getFullYear()}
+                            &copy; 2025
                         </span>
                     </div>
                 </div>
@@ -45,13 +45,14 @@ const Footer = () => {
                 .footer-main-content {
                     display: flex;
                     flex-direction: column;
-                    gap: 5px;
+                    width: 100%;
                 }
 
                 .footer-top-row {
                     display: flex;
                     align-items: center;
-                    gap: 30px;
+                    gap: 40px;
+                    flex-wrap: wrap;
                 }
                 
                 .footer-links {
@@ -60,25 +61,25 @@ const Footer = () => {
                 }
                 
                 .footer-copyright {
-                    color: #ccc;
+                    color: #999;
                     font-size: 0.8rem;
                     margin-left: 34px; /* Align with the start of 'Plexi' text (24px logo + 10px gap) */
+                    margin-top: -2px;
                 }
                 
                 /* Mobile layout */
-                @media (max-width: 768px) {
+                @media (max-width: 600px) {
                     .footer-top-row {
-                        flex-direction: column;
-                        align-items: flex-start;
                         gap: 15px;
+                        justify-content: space-between;
                     }
                     
                     .footer-links {
-                        gap: 20px;
+                        gap: 15px;
                     }
 
                     .footer-copyright {
-                        margin-left: 0;
+                        margin-left: 34px;
                     }
                 }
             `}</style>
