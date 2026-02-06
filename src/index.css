@@ -1,0 +1,76 @@
+/* Global Design System */
+:root {
+  /* Colors */
+  --bg-primary: #FAF8F5; /* Off-white base */
+  --text-primary: #29303D; /* Deep Charcoal */
+  --color-accent: #295647; /* Forest Green */
+  --color-secondary: #D7AA42; /* Gold */
+  --color-white: #FFFFFF;
+  
+  /* Typography */
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-sans);
+  transition: all 0.3s ease;
+}
+
+/* Utility Classes */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: var(--bg-primary);
+  padding: 12px 32px;
+  border: 2px solid var(--color-accent);
+  border-radius: 4px; /* Slightly rounded, professional */
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.btn-primary:hover {
+  background-color: #1e3f34; /* Darker green */
+  border-color: #1e3f34;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--text-primary);
+  padding: 12px 32px;
+  border: 2px solid var(--text-primary);
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.btn-outline:hover {
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+}
