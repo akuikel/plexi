@@ -28,9 +28,19 @@ const Navbar = () => {
                 backdropFilter: scrolled ? 'blur(10px)' : 'none',
                 transition: 'all 0.3s ease',
                 borderBottom: scrolled ? '1px solid rgba(0,0,0,0.05)' : 'none',
-                padding: '20px 0'
+                padding: 'var(--nav-padding, 20px 0)'
             }}
         >
+            <style>{`
+                :root {
+                    --nav-padding: 20px 0;
+                }
+                @media (max-width: 768px) {
+                    :root {
+                        --nav-padding: 10px 0;
+                    }
+                }
+            `}</style>
             <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <Link to="/" className="nav-brand" style={{
                     fontFamily: 'Playfair Display, serif',

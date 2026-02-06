@@ -86,7 +86,7 @@ const Hero = () => {
                 /* Small mobile phones */
                 @media (max-width: 480px) {
                     section {
-                        padding-top: 20px !important;
+                        padding-top: 5px !important;
                         padding-left: 12px !important;
                         padding-right: 12px !important;
                     }
@@ -112,7 +112,7 @@ const Hero = () => {
                 /* Mobile phones */
                 @media (max-width: 768px) {
                     section {
-                        padding-top: 20px !important;
+                        padding-top: 5px !important;
                         padding-left: 15px !important;
                         padding-right: 15px !important;
                     }
