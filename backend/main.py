@@ -466,10 +466,10 @@ async def initiate_call(request: CallInitiateRequest) -> dict:
         vapi_assistant_id = os.getenv("VAPI_ASSISTANT_ID")
         vapi_phone_number_id = os.getenv("VAPI_PHONE_NUMBER_ID")
         
-        if not all([vapi_private_key, vapi_assistant_id, vapi_phone_number_id]):
+        if not all([vapi_private_key, vapi_phone_number_id]):
             return {
                 "success": False,
-                "error": "Vapi credentials not configured. Please set VAPI_PRIVATE_KEY, VAPI_ASSISTANT_ID, and VAPI_PHONE_NUMBER_ID.",
+                "error": "Vapi credentials not configured. Please set VAPI_PRIVATE_KEY and VAPI_PHONE_NUMBER_ID in backend/.env.",
             }
         
         # Prepare Vapi payload - Transient Assistant
@@ -480,7 +480,7 @@ async def initiate_call(request: CallInitiateRequest) -> dict:
                 "number": request.phone_number,
             },
             "assistant": {
-                "firstMessage": f"Hello! This is Persa. I'm calling to help with: {request.instructions}. Is this a good time to talk?",
+                "firstMessage": f"Hello! This is Persa, an AI assistant. Is this a good time to talk?",
                 "model": {
                     "provider": "openai",
                     "model": "gpt-4o",
