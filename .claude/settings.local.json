@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s http://localhost:5173)",
+      "Bash(curl -s http://localhost:5174)",
+      "Bash(pnpm dev *)",
+      "Bash(pnpm install *)",
+      "Bash(curl -s http://127.0.0.1:3000)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:3000/login)",
+      "Bash(netstat -ano)",
+      "Bash(awk '{print $5}')",
+      "Bash(taskkill //PID 26228 //F)",
+      "Bash(taskkill //PID 21824 //F)",
+      "Bash(xargs basename *)",
+      "Bash(awk -F'/' '{print $\\(NF-1\\)}')",
+      "Bash(pnpm add *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:3000/landing)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://127.0.0.1:3000/dashboard)",
+      "Bash(nslookup db.rlekvhlgykppgsodcnhb.supabase.co)",
+      "Bash(nslookup aws-0-us-east-1.pooler.supabase.com)",
+      "Bash(taskkill //PID 7496 //F)",
+      "Bash(curl -s -X POST http://127.0.0.1:3000/api/signup -H 'Content-Type: application/json' -d '{\"email\":\"test_merge_check@test.com\",\"password\":\"TestPass123!\",\"firstName\":\"Test\",\"lastName\":\"User\"}')",
+      "Bash(curl -s -X POST http://127.0.0.1:3000/api/signup -H 'Content-Type: application/json' -d '{\"email\":\"mergetest@gmail.com\",\"password\":\"TestPass123!\",\"firstName\":\"Test\",\"lastName\":\"User\"}')",
+      "Bash(curl -s -X POST http://127.0.0.1:3000/api/login -H 'Content-Type: application/json' -d '{\"email\":\"aavashkuikel@gmail.com\",\"password\":\"wrongpassword\"}')",
+      "Bash(pip install *)",
+      "Bash(python -c \"from main import app; print\\('OK'\\)\")",
+      "Bash(python -m uvicorn main:app --host 0.0.0.0 --port 8787)",
+      "Bash(echo \"Backend PID: $!\")",
+      "Bash(curl -s http://localhost:8787/health)",
+      "Bash(taskkill //PID 27876 //F)",
+      "Bash(pnpm db:push)",
+      "Bash(DATABASE_URL=\"postgresql://postgres.rlekvhlgykppgsodcnhb:H%40lesidriving1@aws-0-us-east-1.pooler.supabase.com:6543/postgres?pgbouncer=true&connection_limit=1\" DIRECT_URL=\"postgresql://postgres.rlekvhlgykppgsodcnhb:H%40lesidriving1@aws-0-us-east-1.pooler.supabase.com:6543/postgres\" pnpm db:push)",
+      "Bash(timeout 5 bash -c \"echo '' | nc -w 3 aws-0-us-east-1.pooler.supabase.com 6543\")",
+      "Bash(timeout 5 bash -c \"echo '' | nc -w 3 aws-0-us-east-1.pooler.supabase.com 5432\")",
+      "Bash(python -c ' *)",
+      "Bash(curl -s -X POST http://127.0.0.1:3000/api/n8n -H 'Content-Type: application/json' -d '{\"call\":{\"prompt\":\"call +14254758215 to make a table reservation for 4 people tonight\"},\"user\":{\"email\":\"test@test.com\"}}')",
+      "Bash(curl -s -X GET 'https://api.vapi.ai/call?limit=10' -H 'Authorization: Bearer af03f635-fe9d-4172-891b-8e064f5a931e')"
+    ]
+  }
+}

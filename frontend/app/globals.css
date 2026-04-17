@@ -1,0 +1,172 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Plexi Design System */
+  --background: #FAF8F5;
+  --foreground: #29303D;
+  --card: #ffffff;
+  --card-foreground: #29303D;
+  --popover: #ffffff;
+  --popover-foreground: #29303D;
+  --primary: #295647;
+  --primary-foreground: #FAF8F5;
+  --secondary: #D7AA42;
+  --secondary-foreground: #29303D;
+  --muted: #f0ede8;
+  --muted-foreground: #6b7280;
+  --accent: #295647;
+  --accent-foreground: #FAF8F5;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #e5e0d8;
+  --input: #f0ede8;
+  --ring: rgba(41, 86, 71, 0.4);
+  --chart-1: #295647;
+  --chart-2: #D7AA42;
+  --chart-3: #4a8c73;
+  --chart-4: #e8c96b;
+  --chart-5: #1e3f34;
+  --radius: 0.5rem;
+  --sidebar: #f0ede8;
+  --sidebar-foreground: #29303D;
+  --sidebar-primary: #295647;
+  --sidebar-primary-foreground: #FAF8F5;
+  --sidebar-accent: #e5e0d8;
+  --sidebar-accent-foreground: #29303D;
+  --sidebar-border: #e5e0d8;
+  --sidebar-ring: rgba(41, 86, 71, 0.3);
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
+}
+
+.dark {
+  --background: #1a2018;
+  --foreground: #FAF8F5;
+  --card: #243022;
+  --card-foreground: #FAF8F5;
+  --popover: #243022;
+  --popover-foreground: #FAF8F5;
+  --primary: #4a8c73;
+  --primary-foreground: #FAF8F5;
+  --secondary: #D7AA42;
+  --secondary-foreground: #29303D;
+  --muted: #2d3d2b;
+  --muted-foreground: #9ca3af;
+  --accent: #3a6b57;
+  --accent-foreground: #FAF8F5;
+  --destructive: #ef4444;
+  --destructive-foreground: #FAF8F5;
+  --border: #3a4a38;
+  --input: #2d3d2b;
+  --ring: rgba(74, 140, 115, 0.5);
+  --chart-1: #4a8c73;
+  --chart-2: #D7AA42;
+  --chart-3: #295647;
+  --chart-4: #e8c96b;
+  --chart-5: #1e3f34;
+  --sidebar: #243022;
+  --sidebar-foreground: #FAF8F5;
+  --sidebar-primary: #4a8c73;
+  --sidebar-primary-foreground: #FAF8F5;
+  --sidebar-accent: #3a4a38;
+  --sidebar-accent-foreground: #FAF8F5;
+  --sidebar-border: #3a4a38;
+  --sidebar-ring: rgba(74, 140, 115, 0.3);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+  --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.2;
+  }
+}
+
+/* Plexi utility classes */
+.btn-primary {
+  background-color: #295647;
+  color: #FAF8F5;
+  padding: 12px 32px;
+  border: 2px solid #295647;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+}
+.btn-primary:hover { background-color: #1e3f34; border-color: #1e3f34; }
+.btn-outline {
+  background-color: transparent;
+  color: #29303D;
+  padding: 12px 32px;
+  border: 2px solid #29303D;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+}
+.btn-outline:hover { background-color: #29303D; color: #FAF8F5; }
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background-color: #999; border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background-color: #666; }
+* { scrollbar-width: thin; scrollbar-color: #999 transparent; }
+::-webkit-scrollbar-button { display: none; width: 0; height: 0; }
+html { scroll-behavior: smooth; }
