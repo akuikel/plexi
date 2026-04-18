@@ -37,7 +37,10 @@ export function useAuthStatus(): UseAuthStatusReturn {
       setLoading(true);
       setError(null);
 
-      const response = await fetch('/api/auth/status', { cache: 'no-store' });
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 5000);
+      const response = await fetch('/api/auth/status', { cache: 'no-store', signal: controller.signal });
+      clearTimeout(timeout);
       const data = await response.json();
 
       setAuthStatus({

@@ -4,7 +4,6 @@ import { CallReports } from '@/components/dashboard/CallReports';
 import { DashboardHeader } from '@/components/dashboard/DashboardHeader';
 import { QuickActions } from '@/components/dashboard/QuickActions';
 import { StatsOverview } from '@/components/dashboard/StatsOverview';
-import { useAuthStatus } from '@/hooks/auth/useAuthStatus';
 import { Button } from '@/components/ui/button';
 import { MessageCircle, BarChart3, Calendar, Phone } from 'lucide-react';
 import Link from 'next/link';
@@ -12,24 +11,10 @@ import { useRouter } from 'next/navigation';
 
 export default function Dashboard() {
   const router = useRouter();
-  const { authenticated, loading, user } = useAuthStatus();
 
   const handleQuickAction = (message: string) => {
     router.push(`/chat?message=${encodeURIComponent(message)}`);
   };
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Loading dashboard...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (!authenticated) return null;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
@@ -38,7 +23,7 @@ export default function Dashboard() {
       <main className="container mx-auto px-4 py-6 lg:py-8 max-w-7xl">
         <div className="mb-6 lg:mb-8">
           <h1 className="text-2xl lg:text-3xl font-bold text-foreground mb-2">
-            Welcome back, {user?.name || 'User'}!
+            Welcome back!
           </h1>
           <p className="text-muted-foreground">Here's an overview of your AI assistant activity.</p>
         </div>

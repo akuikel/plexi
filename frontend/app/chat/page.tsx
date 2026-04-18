@@ -1,7 +1,6 @@
 'use client';
 
 import { DashboardHeader } from '@/components/dashboard/DashboardHeader';
-import { useAuthStatus } from '@/hooks/auth/useAuthStatus';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, Suspense } from 'react';
 import { useSimpleChat } from '@/hooks/chat/useSimpleChat';
@@ -10,7 +9,6 @@ import { SimpleChatPanel } from '@/components/chat/SimpleChatPanel';
 
 function ChatContent() {
   const searchParams = useSearchParams();
-  const { authenticated, loading: authLoading } = useAuthStatus();
 
   const {
     chats,
@@ -29,34 +27,14 @@ function ChatContent() {
   // Handle pre-filled message from query params
   useEffect(() => {
     const message = searchParams.get('message');
-    if (message && authenticated && !selectedChatId && !chatsLoading) {
-      // Create a new chat and send the message
+    if (message && !selectedChatId && !chatsLoading) {
       createNewChat().then((newChatId) => {
         if (newChatId) {
-          setTimeout(() => {
-            sendMessage(decodeURIComponent(message));
-          }, 100);
+          setTimeout(() => sendMessage(decodeURIComponent(message)), 100);
         }
       });
     }
-  }, [searchParams, authenticated, selectedChatId, chatsLoading, createNewChat, sendMessage]);
-
-  // Show loading while checking authentication
-  if (authLoading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Loading chat...</p>
-        </div>
-      </div>
-    );
-  }
-
-  // Don't render anything if not authenticated (will redirect)
-  if (!authenticated) {
-    return null;
-  }
+  }, [searchParams, selectedChatId, chatsLoading]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">

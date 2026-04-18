@@ -37,7 +37,10 @@ export async function GET(request: NextRequest) {
       },
     });
 
-    const { data: { user }, error } = await supabase.auth.getUser(accessToken);
+    const { data: { user }, error } = await Promise.race([
+      supabase.auth.getUser(accessToken),
+      new Promise<never>((_, reject) => setTimeout(() => reject(new Error('timeout')), 4000)),
+    ]);
 
     if (error || !user) {
       return NextResponse.json({
