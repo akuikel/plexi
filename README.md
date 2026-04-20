@@ -1,6 +1,8 @@
 # Plexi — AI Voice Agent Platform
 
 > AI-powered voice assistants that handle your calls, so you don't have to.
+>
+> https://plexi-frontend-git-main-aavash-kuikels-projects.vercel.app/ 
 
 ---
 
